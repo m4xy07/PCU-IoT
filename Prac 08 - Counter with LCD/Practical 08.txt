@@ -1,0 +1,36 @@
+#include <LiquidCrystal_I2C.h>
+LiquidCrystal_I2C lcd(0x27,16,2); //COnnect lcd via i2c to arduino
+word count;
+
+void setup() {
+
+  pinMode(8, INPUT);
+  pinMode(9, INPUT);
+  pinMode(10, INPUT);
+  digitalWrite(8,1);
+  digitalWrite(9,1);
+  digitalWrite(10,1);
+  lcd.begin(16,2);
+  lcd.clear();
+}
+
+void loop() {
+
+  lcd.setCursor(0,0);
+  lcd.print("COUNTER:");
+  lcd.print(count);
+  lcd.print("  ");
+if(digitalRead(8)==0) {
+  count=count+1; //Increment counter
+  delay(200);
+  }
+if(digitalRead(9)==0 && count>0) {
+  count=count-1; // Decrement Counter
+  delay(200);
+  }
+if(digitalRead(10)==0) {
+  count=0; //Resets the count
+  delay(200);
+  }
+}
+

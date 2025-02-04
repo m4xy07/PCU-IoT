@@ -1,0 +1,26 @@
+// Define relay and buzzer pins
+const int relayPin = 7;
+const int buzzerPin = 8;
+
+void setup() {
+  pinMode(relayPin, OUTPUT);
+  pinMode(buzzerPin, OUTPUT);
+}
+
+void loop() {
+  // Turn on relay for 2 seconds (activate the connected device)
+  digitalWrite(relayPin, HIGH);
+  delay(2000); // Wait for 2 seconds
+  
+  // Turn off relay
+  digitalWrite(relayPin, LOW);
+  
+  // Sound the buzzer for 1 second
+  digitalWrite(buzzerPin, HIGH);
+  delay(1000); // Wait for 1 second
+  digitalWrite(buzzerPin, LOW);
+  
+  // Wait for 2 seconds before repeating the process
+  delay(2000);
+}
+
